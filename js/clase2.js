@@ -25,7 +25,7 @@ class Usuario
 
     addBook(varName, varAuthor)
     {
-        return this.libros.push({ nombre: varName, autor: varAuthor });
+        return this.libro.push({ nombre: varName, autor: varAuthor });
     }
 
     getBookNames()
