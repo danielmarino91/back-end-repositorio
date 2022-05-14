@@ -1,35 +1,28 @@
-class Usuario
-{
-    constructor(nombre, apellido, libro, mascotas)
-    {
+class Usuario {
+    constructor(nombre, apellido, libro, mascotas) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.libro = libro;
         this.mascotas = mascotas;
     }
 
-    getFullName()
-    {
+    getFullName() {
         return `${this.nombre} ${this.apellido}`;
     }
 
-    addMascota(varMascota)
-    {
+    addMascota(varMascota) {
         this.mascotas.push(varMascota);
     }
 
-    countMascotas()
-    {
+    countMascotas() {
         return this.mascotas.length;
     }
 
-    addBook(varName, varAuthor)
-    {
+    addBook(varName, varAuthor) {
         return this.libro.push({ nombre: varName, autor: varAuthor });
     }
 
-    getBookNames()
-    {
+    getBookNames() {
         let books = [];
         this.libro.forEach(e => { books.push(e.nombre) });
         return books;

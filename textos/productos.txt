@@ -1,0 +1,8 @@
+[
+  {
+    "title": "Producto 1",
+    "price": 10,
+    "thumbnail": "https://image.com/producto1",
+    "id": 1
+  }
+]
