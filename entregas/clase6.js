@@ -1,48 +1,28 @@
-// const Contenedor = require('../js/clase4b.js')
-// const express = require('express')
-const http = require("http")
+const express = require("express")
+const Contenedor = require("./clase4.js")
+const fs = require("fs")
 
-const server = http.createServer((peticion, respuesta) => {
-
-    const url = peticion.url
-
-    switch (url) {
-        case '/':
-            return respuesta.end('Hola Mundo')
-        case '/productos':
-            return respuesta.end('Endpoint de productos')
-        case '/visitas':
-            return respuesta.end('Endpoint de visitas')
-        default:
-            return respuesta.end('Endpoint no encontrado')
-    }
-}
-)
-
-const connectedServer = server.listen(8080, () => {
-    console.log(`Servidor HTTP escuchando en el puerto ${connectedServer.address().port}`)
-})
+const prueba = Contenedor
+console.log(prueba)
 
 // const app = express()
-
 // const PORT = 8080
 
-// const server = app.listen(PORT, () => {
-//     console.log(`Servidor http escuchando en el puerto ${server.address().port}`)
+// app.get('/', (request, response) => {
+//     response.send(`<h1 style="color: blue; font-family: Roboto">Bienvenidos al servidor express</h1>`)
 // })
 
-// app.get('', (req, res) => {
-//     res.send({ mensaje: 'Hola mundo' })
+// app.get('/productos', (request, response) => {
+//     const productos = fs.readFileSync("./productos.txt")
+//     response.send(productos.toString())
 // })
 
-// app.get('/productos', (req, res) => {
-//     const contenedor = new Contenedor('test.txt')
-//     contenedor.getRandom()
-//     res.send('Endpoint de productos')
+// app.get('/productoRandom', (request, response) => {
+//     response.send(`Producto random`)
 // })
 
-// app.get('/visitas', (req, res) => {
-//     res.send('Endpoint de visitas')
+// const server = app.listen(PORT, ()=>{
+//     console.log(`Servidor HTTP escuchando en el puerto ${PORT}`)
 // })
 
-// server.on('error', (error) => console.log(`Error en servidor: ${error}`))
+// server.on("error", error => console.log(`Error en el servidor: ${error}`))

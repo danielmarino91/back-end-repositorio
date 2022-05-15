@@ -44,6 +44,20 @@ class Contenedor {
         return data.find(item => item.id === id)
     }
 
+    async getRandom() {
+        let data
+        try {
+            data = await fs.promises.readFile(`../textos/${this.file}`)
+            data = JSON.parse(data)
+        } catch (error) {
+            data = []
+            console.log(`No se encontro el archivo (${error})`)
+        }
+
+        let randomId = parseInt(Math.random() * (4 - 1) + 1)
+        return data.find(item => item.id === randomId)
+    }
+
     async getAll() {
         let data
         try {
@@ -89,24 +103,27 @@ class Contenedor {
 
 module.exports = Contenedor
 
-    ; (async () => {
-        const contenedor = new Contenedor("productos.txt")
+    // ; (async () => {
+    //     const contenedor = new Contenedor("productos.txt")
 
-        const newProduct = {
-            title: 'Producto 1',
-            price: 10.0,
-            thumbnail: 'https://image.com/producto1'
-        }
+    //     const newProduct = {
+    //         title: 'Producto 1',
+    //         price: 10.0,
+    //         thumbnail: 'https://image.com/producto1'
+    //     }
 
-        await contenedor.save(newProduct)
+    //     await contenedor.save(newProduct)
 
-        const getProductID = await contenedor.getById(1)
-        console.log(getProductID)
+    //     const getProductID = await contenedor.getById(1)
+    //     console.log(getProductID)
 
-        const getAllProductsID = await contenedor.getAll()
-        console.log(getAllProductsID)
+    //     const getAllProductsID = await contenedor.getAll()
+    //     console.log(getAllProductsID)
 
-        await contenedor.deleteById(1)
+    //     await contenedor.deleteById(1)
 
-        await contenedor.deleteAll()
-    })()
+    //     await contenedor.deleteAll()
+
+    //     const getRandom = await contenedor.getRandom()
+    //     console.log(getRandom)
+    // })()

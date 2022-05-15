@@ -3,5 +3,23 @@
     "express": "^4.18.1",
     "moment": "^2.29.3",
     "nodemon": "^2.0.16"
-  }
+  },
+  "name": "back-end-repositorio",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielmarino91/back-end-repositorio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielmarino91/back-end-repositorio/issues"
+  },
+  "homepage": "https://github.com/danielmarino91/back-end-repositorio#readme"
 }
