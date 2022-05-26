@@ -51,4 +51,3 @@ router.put("/productos/:id", (req, res) => {
 router.delete("/productos/:id", (req, res) => {
     return newAPI.deleteProduct(req, res)
 })
-

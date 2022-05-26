@@ -15,11 +15,11 @@ app.get('/productos', (request, response) => {
 })
 
 app.get('/productoRandom', (request, response) => {
-    ;(async ()=> {
+    ; (async () => {
         const contenedor = new Contenedor("productos.txt")
         const getRandom = await contenedor.getRandom()
         response.send(JSON.stringify(getRandom))
-        })()
+    })()
 })
 
 const server = app.listen(PORT, () => {

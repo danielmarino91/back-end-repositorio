@@ -1,4 +1,4 @@
-# Repositorio para las entregas del curso de Backend (CoderHouse 2022)
+# Repositorio de entregas (Backend - CoderHouse 2022) 
 
 ## Glitch
 ````

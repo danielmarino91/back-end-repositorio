@@ -1,0 +1,1 @@
+El motor que eligiria para mi proyecto seria PUG, de los tres, me parecio el mas sencillo en cuanto a sintaxis, si bien HBS y EJS usan una sintaxis similar a HTML y Javascript (a la cual ya estoy acostumbrado), no me resulto dificil acostumbrarme a la sintaxis de PUG
