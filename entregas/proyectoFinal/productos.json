@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Crash Bandicoot 4: It's About Time",
+        "price": 9000,
+        "code": "fa3qwg",
+        "photo": "https://firebasestorage.googleapis.com/v0/b/kyoto-games.appspot.com/o/producto0.png?alt=media&token=ea7fa393-436c-49f6-a177-2ca7f9db0dca",
+        "desc": "Crash está de regreso en esta cuarta entrega en un nuevo enfrentamiento contra el siniestro Dr. Neo Cortex. Ahora la batalla se dará en una persecución desafiando tiempo y espacio con objetos como las máscaras cuánticas que son capaces de alterar la realidad.",
+        "id": 1,
+        "timestamp": 161512595,
+        "stock": 15
+    },
+    {
+        "name": "Cyberpunk 2077",
+        "price": 6000,
+        "code": "fa3qwg",
+        "photo": "https://firebasestorage.googleapis.com/v0/b/kyoto-games.appspot.com/o/producto1.png?alt=media&token=5677ff09-a5c5-4e24-b8d8-8302de6d2952",
+        "desc": "Los creadores de The Witcher y The Witcher 2: Assassins of Kings anuncian este proyecto que te trasladará a la ciudad de Night City en el futuro año 2077. Allí verás una humanidad bastante degradada que utiliza la tecnología intensivamente, de tal manera que nuestra esencia se ha perdido.",
+        "id": 1,
+        "timestamp": 161512595,
+        "stock": 14
+    },
+    {
+        "name": "DeathLoop",
+        "price": 10000,
+        "code": "fa3qwg",
+        "photo": "https://firebasestorage.googleapis.com/v0/b/kyoto-games.appspot.com/o/producto2.png?alt=media&token=292fc5df-cf65-468d-bd08-be0b6b8c0ae3",
+        "desc": "Este título de aventura y disparos en primera persona te transporta a la isla donde en un ciclo interminable dos asesinos se enfrentan eternamente. ¿Podrás acabar con todos lo objetivos?.",
+        "id": 1,
+        "timestamp": 161512595,
+        "stock": 8
+    }
+]

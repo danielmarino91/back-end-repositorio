@@ -19,7 +19,7 @@ const getTemplate = async () => {
     return templateData;
 }
 
-const addProducto = () => {
+const addProduct = () => {
     const producto = {
         title: document.querySelector("#title").value,
         price: document.querySelector("#price").value,
@@ -29,7 +29,7 @@ const addProducto = () => {
     return false;
 }
 
-myButton.addEventListener("click", () => addProducto());
+myButton.addEventListener("click", () => addProduct());
 
 const addMessage = (e) => {
     const mensaje = {
