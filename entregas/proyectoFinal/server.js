@@ -34,13 +34,13 @@ let productos = [
     {
         title: "Crash Bandicoot 4: It's About Time",
         price: 9000,
-        thumbnail: "https://static.wikia.nocookie.net/doblaje/images/1/12/Crash_bandicoot_4_boxart.jpg/revision/latest?cb=20200622214620&path-prefix=es",
+        thumbnail: "https://firebasestorage.googleapis.com/v0/b/kyoto-games.appspot.com/o/producto0.png?alt=media&token=ea7fa393-436c-49f6-a177-2ca7f9db0dca",
         id: 1,
     },
     {
         title: "Cyberpunk 2077",
         price: 11000,
-        thumbnail: "https://www.elsotanoperdido.com/images/EntradillasExtra/Cyberpunk2077_ENtra4.jpg",
+        thumbnail: "https://firebasestorage.googleapis.com/v0/b/kyoto-games.appspot.com/o/producto1.png?alt=media&token=5677ff09-a5c5-4e24-b8d8-8302de6d2952",
         id: 2,
     },
 ];
