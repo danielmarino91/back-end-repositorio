@@ -20,7 +20,9 @@ server.on("error", error => console.log(`Error en servidor ${error}`));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(express.static("./public"));
+
 app.use('/api', router);
 
 app.set("view engine", "ejs");

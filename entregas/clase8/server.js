@@ -15,7 +15,9 @@ server.on("error", error => console.log(`Error del servidor: ${error}`))
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use('/api', router)
+app.use(express.static(__dirname + '/public'));
 
 let productos = [
     {
@@ -26,28 +28,28 @@ let productos = [
     }
 ];
 
-const newAPI = new API(productos);
+const miAPI = new API(productos);
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
 
 router.get('/productos', (req, res) => {
-    return newAPI.getAll(req, res)
+    return miAPI.getAll(req, res)
 })
 
 router.get('/productos/:id', (req, res) => {
-    return newAPI.getProduct(req, res)
+    return miAPI.getProduct(req, res)
 })
 
 router.post('/productos', (req, res) => {
-    return newAPI.addProduct(req, res)
+    return miAPI.addProduct(req, res)
 })
 
 router.put("/productos/:id", (req, res) => {
-    return newAPI.modifyProduct(req, res)
+    return miAPI.modifyProduct(req, res)
 })
 
 router.delete("/productos/:id", (req, res) => {
-    return newAPI.deleteProduct(req, res)
+    return miAPI.deleteProduct(req, res)
 })
