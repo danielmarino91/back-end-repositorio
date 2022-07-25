@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
+    "connect-mongo": "^4.6.0",
     "ejs": "^3.1.8",
+    "express-session": "^1.17.3",
     "faker": "^5.5.3",
     "knex": "^2.1.0",
     "mongoose": "^6.4.4",

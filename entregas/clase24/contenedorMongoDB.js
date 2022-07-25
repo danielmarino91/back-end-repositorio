@@ -61,7 +61,7 @@ class contenedorMongo {
                     return res.json({ Mensaje: "Carrito eliminado" })
                 }
             })
-            .catch(err => console.log("No se encontró el elemento con dicha id", err))
+            .catch(err => console.log("No se encontró un elemento con esa id", err))
     }
 }
 
