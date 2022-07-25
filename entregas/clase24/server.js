@@ -25,19 +25,21 @@ const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true }
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use("/api", express.static("./public"));
 app.set("view engine", "ejs");
 app.set("views", "./views")
 
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: "",
+        mongoUrl: "mongodb+srv://danielmarino91:asd123456@cluster0.rrrez.mongodb.net/?retryWrites=true&w=majority",
         mongoOptions: advancedOptions,
         ttl: 60
     }),
     secret: 'asd123',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { secure: true }
 }))
 
 const myChat = new contenedorMongo(db, msgsModel);

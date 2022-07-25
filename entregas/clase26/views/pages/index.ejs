@@ -9,11 +9,13 @@
 </head>
 
 <body>
-
-    <% if (name) { %>
+    <% if (user) { %>
         <div class="Welcome">
-            <h3 class="WText">Bienvenido <%= name %>
-            </h3>
+            <div class="WText">Bienvenido <%= user.username %>
+                    <p>Email: <%= user.email %>
+                    </p>
+            </div>
+
             <a href="/api/logout" class="logout"><button class="logoutButton">Cerrar sesión</button></a>
         </div>
         <% } %>
