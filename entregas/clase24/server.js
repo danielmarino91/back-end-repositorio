@@ -31,7 +31,7 @@ app.set("views", "./views")
 
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: "mongodb+srv://danielmarino91:asd123456@cluster0.rrrez.mongodb.net/?retryWrites=true&w=majority",
+        mongoUrl: "",
         mongoOptions: advancedOptions,
         ttl: 60
     }),

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const db = mongoose.connect("",
+export const db = mongoose.connect("mongodb+srv://danielmarino91:asd123456@cluster0.rrrez.mongodb.net/?retryWrites=true&w=majority",
     { useNewUrlParser: true })
 
 const chatSchema = new mongoose.Schema({
