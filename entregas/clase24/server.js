@@ -38,8 +38,7 @@ app.use(session({
     }),
     secret: 'asd123',
     resave: true,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    saveUninitialized: true
 }))
 
 const myChat = new contenedorMongo(db, msgsModel);
@@ -74,7 +73,6 @@ router.post('/mensajes', async (req, res) => {
 })
 
 router.get("/", (req, res) => {
-
     if (req.session.nombre) {
         res.render("pages/index.ejs", { name: req.session.nombre });
     } else {
@@ -83,7 +81,6 @@ router.get("/", (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-
     if (req.session.user) {
         return res.redirect('/api/')
     } else {
@@ -99,7 +96,7 @@ router.post('/login', (req, res) => {
         return res.json({ error: 'Login failed' })
     } else {
         req.session.nombre = yourname
-        res.redirect('/api')
+        res.redirect('/api/')
     }
 })
 
