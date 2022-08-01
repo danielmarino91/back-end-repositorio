@@ -5,44 +5,59 @@ const myButton = document.querySelector("#myButton");
 const chatButton = document.querySelector("#chatButton");
 const chatForm = document.querySelector(".chatForm");
 const prodForm = document.querySelector(".myForm");
+const chatUser = document.querySelector(".chatUser");
 
-prodForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    return fetch(`http://localhost:8080/api/productos/`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            "name": event.target.name.value, "price": event.target.price.value,
-            "desc": event.target.desc.value, "photo": event.target.photo.value, "code": event.target.code.value,
-            "stock": event.target.stock.value, "pw": event.target.pw.value
-        }),
-    })
-})
+console.log(chatUser.innerHTML)
 
 chatForm.addEventListener("submit", (e) => {
     e.preventDefault();
     return fetch(`http://localhost:8080/api/mensajes/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ "texto": e.target.texto.value, "email": e.target.email.value }),
+        body: JSON.stringify(
+            {
+                "author":
+                    { "alias": chatUser.innerHTML, },
+                "text": e.target.text.value,
+                "time": new Date().toLocaleString()
+            }),
+    })
+})
+
+prodForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    return fetch(`http://localhost:8080/api/products/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            "name": event.target.name.value, "price": event.target.price.value,
+            "desc": event.target.desc.value, "photo": event.target.photo.value, "code": event.target.code.value,
+            "stock": event.target.stock.value
+        }),
     })
 })
 
 const render = (data) => {
     const html = data.map(elem => {
         return (`<div style="display:flex; column-gap: 0.2rem;">
-        <strong style="color:#7986CB;">${elem.email}</strong> 
+        <strong style="color:#7986CB;">${elem.author.alias}</strong> 
         <p style="color:#7986CB;">[${elem.time}]</p>
-        <i style="color:white;">${elem.texto}</i></div>`)
+        <i style="color:white;">${elem.text}</i></div>`)
     }).join(" ");
-    document.querySelector(".mensajes").innerHTML = html;
+    document.querySelector(".ChatMsgs").innerHTML = html;
 }
 
-const getTemplate = async () => {
-    const template = await fetch("http://localhost:8080/api/template.html");
-    const templateData = await template.text();
-    return templateData;
+const addMessage = () => {
+    const mensaje = {
+        alias: chatUser.innerHTML,
+        text: document.querySelector("#text").value,
+    }
+
+    socket.emit("new-message", mensaje);
+    return false;
 }
+
+chatForm.addEventListener("submit", () => addMessage());
 
 const addProducto = () => {
     const producto = {
@@ -56,31 +71,24 @@ const addProducto = () => {
 
 myButton.addEventListener("click", () => addProducto());
 
-const addMessage = () => {
-    const mensaje = {
-        email: document.querySelector("#email").value,
-        texto: document.querySelector("#texto").value,
-    }
-
-    socket.emit("new-message", mensaje);
-    return false;
-}
-
-chatButton.addEventListener("click", () => addMessage());
-
 socket.on("Mensajes", data => {
     render(data);
 });
 
 socket.on("MensajeIndividual", data => {
-    document.querySelector(".mensajes").innerHTML += `
+    document.querySelector(".ChatMsgs").innerHTML += `
     <div style="display:flex; column-gap: 0.2rem;">
-        <strong style="color:#7986CB;">${data.email}</strong> 
+        <strong style="color:#7986CB;">${data.alias}</strong> 
         <p style="color:#7986CB;">[${data.time}]</p>
-        <i style="color:white;">${data.texto}</i></div>               
+        <i style="color:white;">${data.text}</i></div>               
 `
-    window.scrollTo(0, document.body.scrollHeight);
 });
+
+const getTemplate = async () => {
+    const template = await fetch("http://localhost:8080/api/template.html");
+    const templateData = await template.text();
+    return templateData;
+}
 
 socket.on("Productos", async data => {
     const templateData = await getTemplate();
