@@ -19,6 +19,15 @@
     }
 
     .myForm {
+        display: grid;
+        width: 75vw;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        background-color: blueviolet;
+    }
+
+    .myForm {
         display: flex;
         flex-direction: column;
         padding: 1rem;
@@ -29,10 +38,6 @@
         text-align: center;
         background-color: #7986CB;
         border: 2px solid white;
-    }
-
-    .myForm input {
-        width: 15rem;
     }
 
     body {
@@ -63,14 +68,18 @@
         margin: 1rem;
     }
 
+    .WText:hover {
+        color: #234182;
+        cursor: pointer;
+    }
+
     .BText {
         color: #7986CB;
         text-align: center;
     }
 
     .WText:hover {
-        color: #234182;
-        cursor: pointer;
+        color: aqua;
     }
 
     .logout {
@@ -120,6 +129,19 @@
     img {
         width: 7rem;
         height: 9rem;
+    }
+
+    .Info {
+        color: white;
+    }
+
+    .Chat h2 {
+        color: white;
+        text-align: center;
+    }
+
+    .chatForm h4 {
+        color: white;
     }
 </style>
 <script src="/socket.io/socket.io.js"></script>

@@ -10,15 +10,20 @@ import randomRouter from './routers/randomRouter.js';
 import flash from 'connect-flash';
 import MongoStore from 'connect-mongo';
 import cookieParser from 'cookie-parser';
+import cluster from 'cluster';
+import os from 'os';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from "passport-local";
 import { createHash, isValidPassword } from './utils.js';
 import minimist from "minimist";
 import "dotenv/config.js";
 
+const numCpus = os.cpus().length
+
 const options = {
     alias: {
-        p: 'PORT'
+        p: 'PORT',
+        m: 'MODO'
     }
 }
 
@@ -31,16 +36,38 @@ const router = Router();
 
 const PORT = myArgs.PORT || 8080;
 
-const server = httpServer.listen(PORT, () => {
-    console.log(`Servidor http escuchando en el puerto ${server.address().port}`)
-})
-server.on("error", error => console.log(`Error en servidor ${error}`));
+if (myArgs.MODO === 'cluster') {
+    if (cluster.isPrimary) {
+        console.log(`El master con pid numero ${process.pid} esta funcionando`);
+
+        for (let i = 0; i < numCpus; i++) {
+            cluster.fork();
+        }
+
+        cluster.on('exit', (worker, code, signal) => {
+            console.log(`el worker ${worker.process.pid} murió`)
+        });
+
+    } else {
+
+        const server = httpServer.listen(PORT, () => {
+            console.log(`Servidor http escuchando en el puerto ${server.address().port}`)
+        })
+        server.on("error", error => console.log(`Error en servidor ${error}`));
+    }
+} else if (myArgs.MODO === 'fork' || !myArgs.MODO) {
+
+    const server = httpServer.listen(PORT, () => {
+        console.log(`Servidor http escuchando en el puerto ${server.address().port}`)
+    })
+    server.on("error", error => console.log(`Error en servidor ${error}`));
+
+}
 
 const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true }
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/api", express.static("./public"));
 app.set("view engine", "ejs");
 app.set("views", "./views")
 app.use(cookieParser());
@@ -149,7 +176,6 @@ router.post('/mensajes', async (req, res) => {
 })
 
 router.get("/", (req, res) => {
-
     if (req.user) {
         req.session.user = req.user;
         res.render("pages/index.ejs", { user: req.user });
@@ -204,11 +230,14 @@ router.get('/logout', (req, res) => {
 })
 
 router.get('/info', (req, res) => {
-    return res.render('pages/info.ejs', { info: process })
+    return res.render('pages/info.ejs', { info: process, cpus: numCpus })
 })
 
 app.use('/api', router);
-app.use('/api/random', randomRouter);
+app.use('/api/random', (req, res, next) => {
+    req.port = PORT;
+    next()
+}, randomRouter);
 app.use('/api/products', productsRouter)
 app.use((req, res, next) => {
     res.status(404).send({ error: -2, descripcion: `ruta ${req.originalUrl} método ${req.method} no implementada` });
