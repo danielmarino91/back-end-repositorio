@@ -14,15 +14,22 @@
         display: grid;
         justify-content: center;
         align-items: center;
+        text-align: center;
+        color: white;
+        margin: 2rem 0rem;
     }
 
     .myForm {
-        display: grid;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
         width: 75vw;
         grid-template-columns: 1fr 1fr;
         align-items: center;
         justify-content: center;
-        background-color: blueviolet;
+        text-align: center;
+        background-color: #7986CB;
+        border: 2px solid white;
     }
 
     .myForm input {
@@ -30,32 +37,36 @@
     }
 
     body {
-        background-image: url("https://www.transparenttextures.com/patterns/argyle.png");
         background-color: rgb(10, 9, 10);
         display: grid;
+        grid-template-rows: 0.2fr 1fr 1fr;
+        grid-template-areas: "arriba"
+            "mid""abj";
         grid-auto-flow: row;
     }
 
     .Welcome {
-        width: 100vw;
-        height: 6rem;
-        grid-area: arriba;
-        position: absolute;
-        top: 0;
-        left: 0;
         display: flex;
-        background-color: rgba(174, 90, 242, 0.3);
-        justify-content: space-around;
+        background-color: #7986CB;
+        border-bottom: 2px solid white;
+        margin-bottom: 1rem;
         align-items: center;
     }
 
     .Welcome p {
-        color: chartreuse;
+        color: white;
+        font-weight: bold;
     }
 
     .WText {
-        color: yellowgreen;
+        color: white;
         justify-content: flex-start;
+        margin: 1rem;
+    }
+
+    .WText:hover {
+        color: #234182;
+        cursor: pointer;
     }
 
     .Menu {
@@ -74,7 +85,7 @@
     }
 
     .BText {
-        color: yellowgreen;
+        color: #7986CB;
         text-align: center;
     }
 
@@ -84,33 +95,46 @@
 
     .logout {
         margin-left: auto;
+        margin-right: 1rem;
     }
 
     .logoutButton {
         color: aliceblue;
         background-color: black;
-        border-style: dotted;
-        border-radius: 5px;
+        border: 2px solid whitesmoke;
+        padding: 0.4rem;
+    }
+
+    .logoutButton:hover {
+        color: black;
+        background-color: white;
+        border: 2px solid #7986CB;
         cursor: pointer;
     }
 
     .ChatGroup {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        margin-top: 7rem;
     }
 
     .Chat {
-        background-color: rgba(231, 165, 165, 0.050);
-        display: grid;
+        color: white;
+        background-color: #7986CB;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin: 0rem auto;
+        width: 80%;
+        border: 2px solid #CCCCCC;
     }
 
     .ChatMsgs {
         justify-content: center;
         align-items: center;
+        border: 2px solid white;
+        border-radius: 5px;
+        padding: 1rem;
     }
 
     .Profile {
@@ -146,16 +170,16 @@
     }
 
     .Info {
-        color: aquamarine;
+        color: white;
     }
 
     .Chat h2 {
-        color: rgb(137, 49, 134);
+        color: black;
         text-align: center;
     }
 
     .chatForm h4 {
-        color: aquamarine;
+        color: white;
     }
 
     .ProdContainer {
@@ -175,26 +199,24 @@
         height: 15rem;
     }
 
-    /* Validacion telefonos css ................................*/
     .container2 {
         text-align: center;
-        /* max-width: 800px; */
         margin-left: auto;
         margin-right: auto;
         padding: 10px;
-        background-color: #285E8E;
+        background-color: blue;
     }
 
     #phone,
     .btn {
         padding-top: 6px;
         padding-bottom: 6px;
-        border: 1px solid #ccc;
+        border: 1px solid white;
         border-radius: 4px;
     }
 
     .btn {
-        color: #ffffff;
+        color: white;
         background-color: #428BCA;
         border-color: #357EBD;
         font-size: 14px;
@@ -211,7 +233,7 @@
     }
 
     .btn:active {
-        box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+        box-shadow: inset 0 3px 5px black;
     }
 
     .alert {
@@ -228,18 +250,16 @@
     }
 
     .alert-error {
-        color: #a94442;
-        background-color: #f2dede;
-        border-color: #ebccd1;
+        color: crimson;
+        background-color: white;
+        border-color: white;
     }
 
-    /* Product Cards ...............................................*/
     .ProdVal {
         display: inline;
         text-align: center;
     }
 
-    /* Carts Styles ............................................... */
     .NewCart {
         color: #428BCA;
         text-decoration: none;
@@ -248,7 +268,7 @@
     }
 
     .NewCart:hover {
-        color: #ffffff;
+        color: white;
     }
 
     .CartsContainer {
@@ -260,7 +280,7 @@
         margin-top: 7rem;
         width: 85vw;
         height: fit-content;
-        background-color: rgba(210, 156, 240, 0.561);
+        background-color: purple;
         grid-gap: 1rem;
     }
 
@@ -276,11 +296,11 @@
 
     .DeleteProd {
         cursor: pointer;
-        color: tomato;
+        color: orange;
     }
 
     .DeleteProd:hover {
-        color: red;
+        color: crimson;
     }
 
     .CartInfo {
@@ -307,6 +327,11 @@
         height: 10rem;
     }
 
+    img {
+        width: 7rem;
+        height: 9rem;
+    }
+
     .AddCont {
         display: flex;
     }
@@ -316,12 +341,12 @@
     }
 
     .AddToCart:hover {
-        color: violet;
+        color: purple;
     }
 
     .NewOrder {
         cursor: pointer;
-        color: aquamarine;
+        color: white;
     }
 
     .NewOrder:hover {

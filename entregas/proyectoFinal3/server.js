@@ -66,7 +66,7 @@ if (myArgs.MODO === 'cluster') {
         }
 
         cluster.on('exit', (worker, code, signal) => {
-            logger.info(`el worker ${worker.process.pid} murió`)
+            logger.info(`El worker ${worker.process.pid} murió`)
         });
 
     } else {
