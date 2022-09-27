@@ -1,5 +1,4 @@
 const socket = io.connect();
-
 const element = document.querySelector("#element");
 const myButton = document.querySelector("#myButton");
 const chatButton = document.querySelector("#chatButton");
@@ -38,14 +37,12 @@ if (prodForm) {
     })
 }
 
-
-
 const render = (data) => {
     const html = data.map(elem => {
         return (`<div style="display:flex; column-gap: 0.2rem;">
-        <strong style="color:blue;">${elem.author.alias}</strong> 
-        <p style="color:brown;">[${elem.time}]</p>
-        <i style="color:green;">${elem.text}</i></div>`)
+        <strong style="color:#7986CB;">${elem.author.alias}</strong> 
+        <p style="color:#7986CB;">[${elem.time}]</p>
+        <i style="color:white;">${elem.text}</i></div>`)
     }).join(" ");
     document.querySelector(".ChatMsgs").innerHTML = html;
 }
@@ -81,8 +78,8 @@ socket.on("Mensajes", data => {
 socket.on("MensajeIndividual", data => {
     document.querySelector(".ChatMsgs").innerHTML += `
     <div style="display:flex; column-gap: 0.2rem;">
-        <strong style="color:blue;">${data.alias}</strong> 
-        <p style="color:white;">[${data.time}]</p>
+        <strong style="color:#7986CB;">${data.alias}</strong> 
+        <p style="color:#7986CB;">[${data.time}]</p>
         <i style="color:white;">${data.text}</i></div>               
 `
 });
