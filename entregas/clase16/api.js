@@ -84,7 +84,7 @@ class Api {
                 .then(() => res.json({ Mensaje: "Datos creados" }))
                 .catch(err => { console.log(err); throw err })
         } else {
-            return res.status(400).send({ error: "Parametros incorrectos" });
+            return res.status(400).send({ error: "Parámetros incorrectos" });
         }
     }
 

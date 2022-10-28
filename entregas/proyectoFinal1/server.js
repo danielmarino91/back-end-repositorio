@@ -13,7 +13,7 @@ const io = new IOServer(httpServer);
 const PORT = process.env.PORT || 8080;
 
 const server = httpServer.listen(PORT, () => {
-    console.log(`Servidor Http escuchando en el puerto ${PORT}`)
+    console.log(`Servidor HTTP escuchando en el puerto ${PORT}`)
 })
 
 server.on("error", error => console.log(`Error en servidor ${error}`));

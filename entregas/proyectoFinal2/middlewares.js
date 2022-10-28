@@ -8,7 +8,7 @@ export const validatePost = () => {
         } else if (!productoNuevo.pw) {
             res.json({ Mensaje: "No estas autorizado a acceder a esta ruta" })
         } else {
-            return res.status(400).send({ error: "Parametros incorrectos" });
+            return res.status(400).send({ error: "Parámetros incorrectos" });
         }
     }
 }
@@ -23,9 +23,9 @@ export const validateAddToCart = () => {
                 Object.keys(product).length === 7) {
                 next();
             } else if (!product.id) {
-                res.json({ Error: "Todo producto necesita una ID propia" })
+                res.json({ Error: "El producto necesita una ID propia" })
             } else {
-                return res.status(400).send({ error: "Parametros incorrectos" })
+                return res.status(400).send({ error: "Parámetros incorrectos" })
             }
         } else {
             if (product.name && product.price && product.photo &&
@@ -33,7 +33,7 @@ export const validateAddToCart = () => {
                 Object.keys(product).length === 6) {
                 next();
             } else {
-                return res.status(400).send({ error: "Parametros incorrectos" })
+                return res.status(400).send({ error: "Parámetros incorrectos" })
             }
         }
     }

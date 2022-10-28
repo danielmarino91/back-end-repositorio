@@ -100,7 +100,7 @@ class Cart {
                 }
             }
         } else {
-            return res.status(400).send({ error: "Parametros incorrectos" });
+            return res.status(400).send({ error: "Parámetros incorrectos" });
         }
     }
 

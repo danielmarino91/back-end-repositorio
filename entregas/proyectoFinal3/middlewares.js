@@ -56,7 +56,7 @@ export const validatePost = () => {
             productoNuevo.desc && productoNuevo.code && productoNuevo.stock) {
             next();
         } else {
-            return res.status(400).send({ error: "parametros incorrectos" });
+            return res.status(400).send({ error: "Parámetros incorrectos" });
         }
     }
 }
@@ -83,7 +83,7 @@ export const validateAddToCart = () => {
             product.desc && product.code && product.stock) {
             next();
         } else {
-            return res.status(400).send({ error: "parametros incorrectos" })
+            return res.status(400).send({ error: "Parámetros incorrectos" })
         }
     }
 }

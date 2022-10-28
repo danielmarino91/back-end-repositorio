@@ -8,7 +8,7 @@ export const validatePost = () => {
             Object.keys(productoNuevo).length === 6) {
             next();
         } else {
-            return res.status(400).send({ error: "parametros incorrectos" });
+            return res.status(400).send({ error: "Parámetros incorrectos" });
         }
     }
 }
@@ -30,14 +30,14 @@ export const validatePut = () => {
 
 export const logger200 = () => {
     return (req, res, next) => {
-        logger.info(`ruta ${req.originalUrl} método ${req.method}`);
+        logger.info(`Ruta ${req.originalUrl} método ${req.method}`);
         next();
     }
 }
 
 export const logger404 = () => {
     return (req, res, next) => {
-        loggerWarn.warn(`ruta ${req.originalUrl} método ${req.method} no implementada`);
-        res.status(404).send({ error: -2, descripcion: `ruta ${req.originalUrl} método ${req.method} no implementada` });
+        loggerWarn.warn(`Ruta ${req.originalUrl} método ${req.method} no implementada`);
+        res.status(404).send({ error: -2, descripcion: `Ruta ${req.originalUrl} método ${req.method} no implementada` });
     };
 }

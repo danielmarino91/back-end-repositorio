@@ -11,7 +11,7 @@ const client = twilio(accountSid, authToken)
 export const validateAdmin = () => {
     return (req, res, next) => {
         if (!req.user || !req.user.admin) {
-            return res.json({ Error: 'No tienes acceso a esta ruta' })
+            return res.json({ Error: 'No tenes acceso a esta ruta' })
         }
         next()
     }
@@ -31,7 +31,7 @@ export const validateNumber = () => {
             .catch(err => loggerError.error(err))
             .finally(_ => {
                 if (phoneError) {
-                    req.session.phoneError = 'Numero invalido'
+                    req.session.phoneError = 'Número invalido'
                 }
                 next()
             })
@@ -56,7 +56,7 @@ export const validatePost = () => {
             productoNuevo.desc && productoNuevo.code && productoNuevo.stock) {
             next();
         } else {
-            return res.status(400).send({ error: "parametros incorrectos" });
+            return res.status(400).send({ error: "Parámetros incorrectos" });
         }
     }
 }
@@ -71,7 +71,7 @@ export const validatePut = () => {
         if (format) {
             next();
         } else {
-            res.send({ error: "El formato del producto no es correcto" })
+            res.send({ error: "El formato del producto es incorrecto" })
         }
     }
 }
@@ -83,7 +83,7 @@ export const validateAddToCart = () => {
             product.desc && product.code && product.stock) {
             next();
         } else {
-            return res.status(400).send({ error: "parametros incorrectos" })
+            return res.status(400).send({ error: "Parámetros incorrectos" })
         }
     }
 }
@@ -94,21 +94,21 @@ export const validateNewOrder = () => {
         if (order.client && order.order && order.owner) {
             next();
         } else {
-            return res.status(400).send({ error: "parametros de orden incorrectos" })
+            return res.status(400).send({ error: "Parámetros de orden incorrectos" })
         }
     }
 }
 
 export const logger200 = () => {
     return (req, res, next) => {
-        logger.info(`ruta ${req.originalUrl} método ${req.method}`);
+        logger.info(`Ruta ${req.originalUrl} método ${req.method}`);
         next();
     }
 }
 
 export const logger404 = () => {
     return (req, res, next) => {
-        loggerWarn.warn(`ruta ${req.originalUrl} método ${req.method} no implementada`);
-        res.status(404).send({ error: -2, descripcion: `ruta ${req.originalUrl} método ${req.method} no implementada` });
+        loggerWarn.warn(`Ruta ${req.originalUrl} método ${req.method} no implementada`);
+        res.status(404).send({ error: -2, descripcion: `Ruta ${req.originalUrl} método ${req.method} no implementada` });
     };
 }

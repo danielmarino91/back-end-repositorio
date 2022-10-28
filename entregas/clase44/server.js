@@ -47,7 +47,7 @@ const PORT = myArgs.PORT || process.env.PORT || 8080;
 
 const serverUp = () => {
     const server = httpServer.listen(PORT, () => {
-        logger.info(`Servidor http escuchando en el puerto ${server.address().port}`)
+        logger.info(`Servidor HTTP escuchando en el puerto ${server.address().port}`)
     })
     server.on("error", error => loggerError.error(`Error en servidor ${error}`));
 }
@@ -61,7 +61,7 @@ if (myArgs.MODO === 'cluster') {
         }
 
         cluster.on('exit', (worker, code, signal) => {
-            logger.info(`el worker ${worker.process.pid} murió`)
+            logger.info(`El worker ${worker.process.pid} murió`)
         });
 
     } else {
@@ -87,7 +87,7 @@ app.use(session({
         mongoOptions: advancedOptions,
         ttl: 600
     }),
-    secret: 'fahrenheit',
+    secret: 'asd123',
     resave: true,
     saveUninitialized: true
 }))

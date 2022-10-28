@@ -10,7 +10,7 @@ const client = twilio(accountSid, authToken)
 export const validateAdmin = () => {
     return (req, res, next) => {
         if (!req.user || !req.user.admin) {
-            return res.status(403).json({ Error: 'No tienes acceso a esta ruta' })
+            return res.status(403).json({ Error: 'No tenes acceso a esta ruta' })
         }
         next()
     }
@@ -30,7 +30,7 @@ export const validateNumber = () => {
             .catch(err => loggerError.error(err))
             .finally(_ => {
                 if (phoneError) {
-                    req.session.phoneError = 'Numero invalido'
+                    req.session.phoneError = 'Número invalido'
                 }
                 next()
             })
@@ -56,7 +56,7 @@ export const validatePost = () => {
             Object.keys(productoNuevo).length === 6) {
             next();
         } else {
-            return res.status(400).send({ error: "Parametros incorrectos" });
+            return res.status(400).send({ error: "Parámetros incorrectos" });
         }
     }
 }
@@ -83,7 +83,7 @@ export const validateAddToCart = () => {
             product.desc && product.code && product.stock) {
             next();
         } else {
-            return res.status(400).send({ error: "Parametros incorrectos" })
+            return res.status(400).send({ error: "Parámetros incorrectos" })
         }
     }
 }
@@ -94,7 +94,7 @@ export const validateNewOrder = () => {
         if (order.client && order.order && order.owner) {
             next();
         } else {
-            return res.status(400).send({ error: "Parametros de orden incorrectos" })
+            return res.status(400).send({ error: "Parámetros de orden incorrectos" })
         }
     }
 }

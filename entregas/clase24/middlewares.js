@@ -6,7 +6,7 @@ export const validatePost = () => {
             Object.keys(productoNuevo).length === 6) {
             next();
         } else {
-            return res.status(400).send({ error: "parametros incorrectos" });
+            return res.status(400).send({ error: "Parámetros incorrectos" });
         }
     }
 }
