@@ -43,7 +43,6 @@
 ```
 
 ## Comandos
----------------
 ### Iniciar API
 ```
 npm start
