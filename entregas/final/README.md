@@ -1,7 +1,6 @@
 # Proyecto Final Backend (CoderHouse 2022)
 
 ## Rutas
----------------
 ### Login/Acceder a la API
 ```
 /shop
