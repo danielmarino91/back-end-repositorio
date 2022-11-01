@@ -9,8 +9,8 @@ class MessageToDAOMongoDB extends contenedorMongo {
     async getOwnMsgs(alias) {
         return this.db
             .then(_ => this.model.find({ $or: [{ author: alias }, { to: alias }] }))
-            .then(msgs => {
-                return msgs;
+            .then(messages => {
+                return messages;
             })
     }
 }

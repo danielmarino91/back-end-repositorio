@@ -10,7 +10,7 @@ export const createMessage = async (req, res) => {
     return messageToService.createMsgs(newMessage)
         .then(message => {
             logger.info('Mensaje creado')
-            return res.status(201).json({ msg: message })
+            return res.status(201).json({ message })
         })
         .catch(err => {
             loggerError.error(err.toString());

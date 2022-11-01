@@ -1,7 +1,7 @@
 class CartDTO {
-    constructor(rawCart) {
-        this.products = rawCart.products;
-        this.owner = rawCart.owner;
+    constructor(cart) {
+        this.products = cart.products;
+        this.owner = cart.owner;
     }
 }
 

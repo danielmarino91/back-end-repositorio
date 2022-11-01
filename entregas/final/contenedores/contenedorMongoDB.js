@@ -40,8 +40,8 @@ class contenedorMongo {
     async deleteElem(id) {
         return this.db
             .then(_ => this.model.findOne({ _id: id }))
-            .then(elem => {
-                return elem.remove()
+            .then(e => {
+                return e.remove()
             })
     }
 }

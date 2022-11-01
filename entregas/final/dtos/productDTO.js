@@ -1,13 +1,13 @@
 class ProductDTO {
-    constructor(rawProd) {
-        this.name = rawProd.name;
-        this.price = rawProd.price;
-        this.stock = rawProd.stock;
-        this.photo = rawProd.photo;
-        this.code = rawProd.code;
-        this.desc = rawProd.desc;
-        this.category = rawProd.category;
-        this.id = rawProd._id;
+    constructor(product) {
+        this.name = product.name;
+        this.price = product.price;
+        this.stock = product.stock;
+        this.photo = product.photo;
+        this.code = product.code;
+        this.desc = product.desc;
+        this.category = product.category;
+        this.id = product._id;
     }
 }
 

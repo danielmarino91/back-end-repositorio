@@ -33,11 +33,11 @@ if (prodForm) {
 }
 
 const render = (data) => {
-    const html = data.map(elem => {
+    const html = data.map(e => {
         return (`<div style="display:flex; column-gap: 0.2rem;">
-        <p style="color: #ADCF1A;">[${elem.time}]</p>
-        <strong style="color: white;">${elem.author.alias}: </strong> 
-        <i style="color: #FFFF9E;">${elem.text}</i></div>`)
+        <p style="color: #ADCF1A;">[${e.time}]</p>
+        <strong style="color: white;">${e.author.alias}: </strong> 
+        <i style="color: #FFFF9E;">${e.text}</i></div>`)
     }).join(" ");
     document.querySelector(".chatMsgs").innerHTML = html;
 }
@@ -74,7 +74,7 @@ if (chatForm) {
     chatForm.addEventListener("submit", () => addMessage());
 }
 
-const addProducto = () => {
+const addProduct = () => {
     const producto = {
         name: document.querySelector("#name").value,
         price: document.querySelector("#price").value,
@@ -84,7 +84,7 @@ const addProducto = () => {
     return false;
 }
 
-myButton && myButton.addEventListener("click", () => addProducto());
+myButton && myButton.addEventListener("click", () => addProduct());
 
 socket.on("Mensajes", data => {
     render(data);
@@ -108,12 +108,12 @@ socket.on("Productos", async data => {
     const templateData = await getTemplate();
     const template = ejs.compile(templateData);
 
-    const templateRendered = data.map(elem => {
+    const templateRendered = data.map(e => {
         return template({
-            name: elem.name,
-            price: elem.price,
-            photo: elem.photo,
-            id: elem.id,
+            name: e.name,
+            price: e.price,
+            photo: e.photo,
+            id: e.id,
         })
     }).join(" ");
 

@@ -1,5 +1,5 @@
-import DAOFactory from "../factory/DAOfactory.js";
 import CartService from "../services/cartService.js";
+import DAOFactory from "../factory/DAOfactory.js";
 import { logger, loggerError } from "../utils/logger.js";
 
 const myDAO = new DAOFactory();

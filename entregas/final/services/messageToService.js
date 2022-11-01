@@ -11,8 +11,8 @@ class MessageToService {
         return this.repository.getOwnMsgs(alias);
     }
 
-    async createMsgs(msg) {
-        return this.repository.createMessage(msg);
+    async createMsgs(message) {
+        return this.repository.createMessage(message);
     }
 }
 

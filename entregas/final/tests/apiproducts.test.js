@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import request from 'supertest';
 import "dotenv/config.js";
+
 const myReq = request(`http://localhost:${process.env.PORT}`);
 
 describe('Tests a los metodos CRUD de los productos', function() {

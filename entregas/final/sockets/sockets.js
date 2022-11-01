@@ -1,5 +1,5 @@
-import { productService } from "../controllers/productsController.js";
 import contenedorMongo from "../contenedores/contenedorMongoDB.js";
+import { productService } from "../controllers/productsController.js";
 import { db, msgsModel } from "../dbmodels/dbsConfig.js";
 
 const myChat = new contenedorMongo(db, msgsModel);

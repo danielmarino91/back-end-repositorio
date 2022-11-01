@@ -1,9 +1,9 @@
 class MessageToDTO {
-    constructor(rawMsg) {
-        this.author = rawMsg.author;
-        this.text = rawMsg.text;
-        this.time = rawMsg.time;
-        this.to = rawMsg.to;
+    constructor(message) {
+        this.author = message.author;
+        this.text = message.text;
+        this.time = message.time;
+        this.to = message.to;
     }
 }
 

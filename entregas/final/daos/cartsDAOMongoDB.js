@@ -22,12 +22,12 @@ class CartDAOMongoDB extends contenedorMongoDB {
             })
     }
 
-    async addToCart(product, ownerId) {
+    async addToCart(product, id) {
         return this.db
-            .then(_ => this.model.findOne({ owner: ownerId }))
+            .then(_ => this.model.findOne({ owner: id }))
             .then(data => {
                 if (data) {
-                    const found = data.products.find(prod => prod.code === product.code);
+                    const found = data.products.find(e => e.code === product.code);
                     if (found) {
                         found.quantity += product.quantity;
                         data.save();
@@ -37,18 +37,18 @@ class CartDAOMongoDB extends contenedorMongoDB {
                     }
                 } else {
                     const newCart = new this.model();
-                    newCart.owner = ownerId;
+                    newCart.owner = id;
                     newCart.products.push(product);
                     return this.db.then(_ => newCart.save())
                 }
             })
     }
 
-    async deleteCartProd(id, id_prod) {
+    async deleteCartProd(id, idProd) {
         return this.db
             .then(_ => this.model.findOne({ owner: id }))
             .then(cart => {
-                cart.products.id(id_prod).remove()
+                cart.products.id(idProd).remove()
                 cart.save();
             })
     }

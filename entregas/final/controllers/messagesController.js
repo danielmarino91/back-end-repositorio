@@ -1,5 +1,5 @@
-import MessageRepository from "../repository/messageRepository.js";
 import MessageService from "../services/messageService.js";
+import MessageRepository from "../repository/messageRepository.js";
 import { logger, loggerError } from "../utils/logger.js";
 
 export const messagesStorage = new MessageRepository();

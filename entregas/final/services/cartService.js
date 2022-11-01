@@ -20,16 +20,16 @@ class CartService {
         return this.repository.postElem(cart);
     }
 
-    async addToCart(product, ownerId) {
-        return this.repository.addToCart(product, ownerId);
+    async addToCart(product, id) {
+        return this.repository.addToCart(product, id);
     }
 
     async deleteCart(id) {
         return this.repository.deleteElem(id);
     }
 
-    async deleteProd(id, id_prod) {
-        return this.repository.deleteCartProd(id, id_prod);
+    async deleteProd(id, idProd) {
+        return this.repository.deleteCartProd(id, idProd);
     }
 }
 

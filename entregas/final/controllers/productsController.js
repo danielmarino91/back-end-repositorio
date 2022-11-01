@@ -1,5 +1,5 @@
-import ProductsService from "../services/productsService.js";
 import ProductRepository from "../repository/productRepository.js";
+import ProductsService from "../services/productsService.js";
 import { logger, loggerError } from "../utils/logger.js";
 
 export const productsStorage = new ProductRepository();

@@ -1,6 +1,6 @@
-import twilio from 'twilio';
-import passport from 'passport';
 import minimist from "minimist";
+import passport from 'passport';
+import twilio from 'twilio';
 import { logger, loggerWarn, loggerError } from "../utils/logger.js";
 import "dotenv/config.js";
 
@@ -14,7 +14,6 @@ const myArgs = minimist(process.argv.slice(2), options)
 const TEST = myArgs.TEST || process.env.TEST || undefined;
 const accountSid = process.env.ACCOUNTSID;
 const authToken = process.env.AUTHTOKEN;
-
 const client = twilio(accountSid, authToken)
 
 const mockMiddleware = () => {

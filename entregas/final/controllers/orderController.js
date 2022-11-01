@@ -1,5 +1,5 @@
-import OrderService from "../services/orderService.js";
 import DAOFactory from "../factory/DAOfactory.js";
+import OrderService from "../services/orderService.js";
 import { loggerError } from "../utils/logger.js";
 
 const myDAO = new DAOFactory();

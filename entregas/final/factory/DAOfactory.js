@@ -1,10 +1,10 @@
 import minimist from "minimist";
-import ProductsDAOMongoDB from "../daos/productsDAOMongoDB.js";
-import ProductsTestDAOMongoDB from "../daos/productsTestDAOMongoDB.js";
 import cartsDAOMongoDB from "../daos/cartsDAOMongoDB.js";
-import OrderDAOMongoDB from "../daos/orderDAOMongoDB.js"
 import MessageDAOMongoDB from "../daos/messagesDAOMongoDB.js";
 import MessageToDAOMongoDB from "../daos/messageToDAOMongoDB.js";
+import OrderDAOMongoDB from "../daos/orderDAOMongoDB.js"
+import ProductsDAOMongoDB from "../daos/productsDAOMongoDB.js";
+import ProductsTestDAOMongoDB from "../daos/productsTestDAOMongoDB.js";
 import "dotenv/config.js";
 
 const options = {
@@ -42,7 +42,7 @@ class DAOFactory {
             if (this.db === 'no') {
                 cartInstance = new cartsDAOMongoDB();
             } else {
-                cartInstance = new cartsDAOMongoDB(); 
+                cartInstance = new cartsDAOMongoDB();
             }
         }
         return cartInstance;
@@ -53,7 +53,7 @@ class DAOFactory {
             if (this.db === 'no') {
                 msgInstance = new MessageDAOMongoDB();
             } else {
-                msgInstance = new MessageDAOMongoDB(); 
+                msgInstance = new MessageDAOMongoDB();
             }
         }
         return msgInstance;
@@ -64,7 +64,7 @@ class DAOFactory {
             if (this.db === 'no') {
                 msgToInstance = new MessageToDAOMongoDB();
             } else {
-                msgInstance = new MessageToDAOMongoDB(); 
+                msgInstance = new MessageToDAOMongoDB();
             }
         }
         return msgToInstance;
@@ -75,7 +75,7 @@ class DAOFactory {
             if (this.db === 'no') {
                 orderInstance = new OrderDAOMongoDB();
             } else {
-                orderInstance = new OrderDAOMongoDB(); 
+                orderInstance = new OrderDAOMongoDB();
             }
         }
         return orderInstance

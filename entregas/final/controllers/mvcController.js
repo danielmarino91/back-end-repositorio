@@ -1,7 +1,7 @@
 import os from 'os';
 import { cartService } from "./cartController.js";
-import { orderService } from "./orderController.js";
 import { messageService } from "./messagesController.js";
+import { orderService } from "./orderController.js";
 import { productService } from "./productsController.js";
 import { User, msgToModel } from "../dbmodels/dbsConfig.js";
 import { loggerError } from "../utils/logger.js";

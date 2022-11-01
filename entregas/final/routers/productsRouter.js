@@ -1,6 +1,7 @@
-import { validatePost, validatePut } from "../middlewares/middlewares.js";
 import { getProducts, getProduct, createProduct, changeProduct, deleteProduct, getProductsByCategory } from "../controllers/productsController.js";
+import { validatePost, validatePut } from "../middlewares/middlewares.js";
 import express from "express";
+
 const { Router } = express;
 const productsRouter = Router()
 

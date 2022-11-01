@@ -1,8 +1,8 @@
 class MessageDTO {
-    constructor(rawMsg) {
-        this.author = rawMsg.author;
-        this.text = rawMsg.text;
-        this.time = rawMsg.time;
+    constructor(msg) {
+        this.author = msg.author;
+        this.text = msg.text;
+        this.time = msg.time;
     }
 }
 

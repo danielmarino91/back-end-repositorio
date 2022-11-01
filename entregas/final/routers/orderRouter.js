@@ -1,6 +1,6 @@
 import express from "express";
-import { validateNewOrder, jwt } from "../middlewares/middlewares.js";
 import { createOrder, getOrders } from "../controllers/orderController.js";
+import { validateNewOrder, jwt } from "../middlewares/middlewares.js";
 
 const { Router } = express;
 const orderRouter = Router()

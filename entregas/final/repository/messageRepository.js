@@ -10,16 +10,16 @@ class MessageRepository {
 
     async getMessages() {
         const messages = await this.dao.getElems();
-        return messages.map(msg => new MessageDTO(msg));
+        return messages.map(message => new MessageDTO(message));
     }
 
     async getOwnMsgs(alias) {
         const messages = await this.dao.getOwnMsgs(alias);
-        return messages.map(msg => new MessageDTO(msg));
+        return messages.map(message => new MessageDTO(message));
     }
 
-    async createMessage(msg) {
-        return await this.dao.postElem(msg);
+    async createMessage(message) {
+        return await this.dao.postElem(message);
     }
 }
 
