@@ -1,0 +1,18 @@
+<% if (user) { %>
+    <div class="navbar">
+        <div class="navbar__links">
+            <a href="/shop/">Home</a>
+            <a href="/shop/mycart/<%= user._id %>">Carrito</a>
+            <a href="/shop/profile">
+                <%= user.username %>
+            </a>
+        </div>
+        <a href="/shop/logout"><button class="aButton">Cerrar sesión</button></a>
+    </div>
+    <% } %>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Montserrat&family=Roboto&display=swap"
+            rel="stylesheet">
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Msgto</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <%- include("../partials/css.ejs"); %>
+        <%- include("../partials/head.ejs"); %>
+</head>
+
+<body>
+
+    <% if (user.admin) { %>
+        <h1 class="chatMessagesTitle">Chat con usuarios</h1>
+        <% } else { %>
+            <h1 class="chatMessagesTitle">Chat con sistema</h1>
+            <% } %>
+                <div class="chatMessagesBox">
+                    <div class="chatMessagesBox__left">
+                        <% for (let i=0; i < users.length; i++) { %>
+                            <div class="chatMessagesBox__card"
+                                onclick="getConversation(`<%= JSON.stringify(msgs) %>`, `<%= JSON.stringify(user.username) %>`, `<%= JSON.stringify(users[i].username) %>`)">
+                                <h2 class="userCardName" id="<%= users[i].username %>">Mensajes con <span>
+                                        <%= users[i].username %>
+                                    </span></h2>
+                            </div>
+                            <% } %>
+                    </div>
+                    <h4 class="myUser">
+                        <%= user.username %>
+                    </h4>
+                    <div class="messagesView">
+                        <div class="msgs">
+                        </div>
+                    </div>
+                </div>
+
+                <script src="/shop/ejs.js"></script>
+                <script type="text/javascript" src="/shop/msgto.js" defer></script>
+                <script>
+                    const getConversation = (message, user1, user2) => {
+                        user1 = user1.replaceAll('"', '');
+                        user2 = user2.replaceAll('"', '');
+                        message = JSON.parse(message);
+                        let messages = [];
+                        const msgsPlace = $(".msgs");
+                        const userCardName = $(`#${user2}`);
+                        const userCard = $(".userCard")
+                        let counter = 0;
+                        const formHtml = `
+            <form enctype="application/json" class="messageForm">
+                <div class="form-group">
+                    <h4 class="myUser"><%= user.username %></h4>
+                </div>
+                <div class="form-group">
+                    <textarea type="text" id="textToAdm" name="text" placeholder="Envia un mensaje" required></textarea>
+                    <button type="submit" id="msgToAdmButton" class="btn btn-primary msgToAdmButton">Enviar</button>
+                </div>
+            </form>
+            `
+                        $(".userCardName").removeClass("blue");
+                        userCardName.addClass("blue");
+
+                        for (let i = 0; i < message.length; i++) {
+                            if (message[i].author === user1.replaceAll('"', '') && message[i].to === user2.replaceAll('"', '')
+                                || message[i].author === user2.replaceAll('"', '') && message[i].to === user1.replaceAll('"', '')) {
+                                messages.push(message[i]);
+                            }
+                        }
+                        let messagesString = messages.length ? messages.map(message => {
+                            return `
+                <h4>${message.time} ${message.author}: ${message.text}</h4>
+                `
+                        }).join('') : "<h4>No hay mensajes de este usuario</h4>"
+
+                        msgsPlace.html(`<h3 class="selectedUser">${user2}</h3>` + messagesString);
+                        $(formHtml).appendTo($(".messagesView"))
+                    }
+                </script>
+</body>
+
+</html>

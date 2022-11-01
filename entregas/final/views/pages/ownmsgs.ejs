@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ownmsgs</title>
+    <% user=JSON.parse(user) %>
+        <%- include("../partials/head.ejs"); %>
+            <%- include("../partials/css.ejs"); %>
+</head>
+
+<body>
+    <div class="messagesBox">
+        <% if (messages) { %>
+            <h1>Mensajes enviados</h1>
+            <a href="/shop/profile">Regresar al perfil</a>
+            <% for (let i=0; i < messages.length; i++) { %>
+                <div class="showMessage">
+                    <div>
+                        <h4><span class="showMessage__time">
+                                <%= messages[i].time %>
+                            </span> : <span class="showMessage__text">
+                                <%= messages[i].text %>
+                            </span></h4>
+                    </div>
+                </div>
+                <% } %>
+                    <% } else { %>
+                        <h2>No hay ningun mensaje</h2>
+                        <% } %>
+    </div>
+</body>

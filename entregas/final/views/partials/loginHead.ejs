@@ -1,0 +1,82 @@
+<style>
+    * {
+        font-family: Roboto, sans-serif;
+        font-size: 1.1rem;
+    }
+
+    body {  
+        background-color: #212E36 !important;
+        height: 100vh;
+    }
+
+    .mainTitle {
+        font-size: 2.2rem;
+    }
+
+    .loginBox {
+        width: 40%;
+        margin: 2rem auto;
+        padding: 2rem;
+        text-align: center;
+        color: white;
+        background-color: #121B22;
+        border: 2px solid #ADCF1A;
+        border-radius: 10px;
+    }
+
+    .errorMessage {
+        color: red;
+        font-weight: bolder;
+    }
+
+    .inputBox {
+        padding: 1rem;
+        border-radius: 10px;
+        width: 80%;
+        outline: none;
+        border: 3px solid #ADCF1A;
+        margin: 0.5rem;
+    }
+
+    .inputPhone {
+        padding: 1rem !important;
+        border-radius: 10px !important;
+        width: 80%;
+        outline: none !important;
+        border: 3px solid #ADCF1A !important;
+        margin: 0.5rem !important;
+    }
+
+    .emailAndPassBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2rem 0rem;
+    }
+
+    .submitButton {
+        transition: color 0.3s, background-color 0.3s, border 0.3s;
+        padding: 0.5rem 1.5rem;
+        border: 2px solid white;
+        border-radius: 20px;
+        background-color: #ADCF1A;
+        color: #121B22;
+        cursor: pointer;
+        margin: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .submitButton:hover {
+        border: 2px solid white;
+        background-color: black;
+        color: white;
+    }
+
+    .submitButton:active {
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+    }
+</style>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>

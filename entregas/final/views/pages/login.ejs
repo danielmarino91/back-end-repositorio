@@ -1,0 +1,31 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <%- include("../partials/loginHead.ejs"); %>
+</head>
+
+<body>
+    <form action="/shop/login" method="post" enctype="application/json">
+        <div class="loginBox">
+            <h1 class="mainTitle">Bienvenido</h1>
+            <div class=" emailAndPassBox">
+                <input type="text" id="email" name="email" class="inputBox" placeholder="Ingrese el email" required />
+            </div>
+            <div class="emailAndPassBox">
+                <input type="password" id="password" name="password" class="inputBox"
+                    placeholder="Ingrese la contraseña" required />
+            </div>
+            <button class="submitButton" type="submit">Iniciar sesión</button>
+            <p class="errorMessage">
+                <%= message.join(", "); %></p>
+        <p>¿No tenés cuenta? <a href=" /shop/signup">Registrate</a>
+            </p>
+        </div>
+    </form>
+</body>
+
+</html>

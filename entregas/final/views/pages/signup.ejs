@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <%- include("../partials/loginHead.ejs"); %>
+        <%- include("../partials/css.ejs"); %>
+</head>
+
+<body>
+    <form action="/shop/signup" method="post" enctype="application/json">
+        <div class="loginBox">
+            <h1 class="mainTitle">Crear cuenta</h1>
+            <p class="errorMessage">
+                <%= message.join(", "); %></p>
+                <div class=" emailAndPassBox">
+                    <input type=" text" id="username" name="username" placeholder="Nombre de usuario" class="inputBox"
+                        required />
+                    <input type="email" id="email" name="email" placeholder="Email" class="inputBox" required />
+                    <input type="text" id="name" name="name" placeholder="Nombre" class="inputBox" required />
+                    <input type="text" id="address" name="address" placeholder="Dirección" class="inputBox" required />
+                    <input type="password" id="password" name="password" placeholder="Contraseña" class="inputBox"
+                        required />
+                    <input type="password" id="rpassword" name="rpassword" placeholder="Repita la contraseña"
+                        class="inputBox" required />
+                    <input id="phone" type="tel" name="phone" size="20" class="inputPhone" required />
+                    <button class="submitButton" type="submit">Crear cuenta</button>
+        </div>
+        <p>¿Ya tenés cuenta? <a href="/shop/login">Iniciar sesión</a>
+        </p>
+        </div>
+    </form>
+    <script type="text/javascript" src="/shop/main.js"></script>
+    <%- include("../partials/phonev.ejs"); %>
+</body>
+
+</html>

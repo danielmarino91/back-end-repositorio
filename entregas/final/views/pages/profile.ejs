@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <%- include("../partials/head.ejs"); %>
+        <%- include("../partials/css.ejs"); %>
+</head>
+
+<body>
+    <div class="profileBox">
+        <% if (user) { %>
+            <div class="profileInfo">
+                <div>
+                    <h1>Nombre: <span class="profileInfo__data">
+                            <%= user.name %>
+                        </span>
+                    </h1>
+                    <h1>Usuario: <span class="profileInfo__data">
+                            <%= user.username %>
+                        </span>
+                    </h1>
+                    <h1>Email: <span class="profileInfo__data">
+                            <%= user.email %>
+                        </span>
+                    </h1>
+                    <h1>Dirección: <span class="profileInfo__data">
+                            <%= user.address %>
+                        </span>
+                    </h1>
+                    <h1>Teléfono: <span class="profileInfo__data">
+                            <%= user.phone %>
+                        </span>
+                    </h1>
+                    <hr class="profile__line" />
+                    <h1><a href="/shop/orders">Órdenes de compra</a></h1>
+                    <h1><a href="/shop/messages">Mensajes enviados</a></h1>
+                </div>
+            </div>
+            <% } %>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,592 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+<style>
+    * {
+        font-family: Roboto, sans-serif;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    body {
+        display: grid;
+        grid-auto-flow: row;
+        font-size: larger;
+        background-color: #212E36;
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        height: 6rem;
+        background-color: #121B22;
+        border-top: 2px solid #adcf1a;
+    }
+
+    h2 {
+        color: #CCE00E;
+        text-align: center;
+    }
+
+    h3 {
+        color: #FFF700;
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100vw;
+        height: 4rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #121B22;
+        border-bottom: 2px solid #adcf1a;
+        z-index: 5;
+        grid-area: arriba;
+    }
+
+    .navbar__links a {
+        color: #FFFF9E;
+        text-decoration: none;
+        margin-left: 1rem;
+    }
+
+    .navbar__links a:hover {
+        color: #CCE00E;
+    }
+
+    .navbar__links a:active {
+        color: white;
+    }
+
+    .aButton {
+        transition: color 0.3s, background-color 0.3s, border 0.3s;
+        padding: 0.5rem 1.5rem;
+        border: 2px solid white;
+        border-radius: 20px;
+        background-color: #ADCF1A;
+        color: black;
+        cursor: pointer;
+        margin: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .bigTitleDefault {
+        font-size: 2rem;
+        color: #CCE00E;
+        text-align: center;
+        grid-column: 2 / 4
+    }
+
+    .allContent {
+        display: flex;
+    }
+
+    .sideLeft {
+        width: 50%;
+    }
+
+    .sideRight {
+        width: 50%;
+    }
+
+    .chatStyle {
+        display: grid;
+        margin: 2rem;
+        color: white;
+        background-color: #121B22;
+        border: 2px solid #ADCF1A;
+        border-radius: 10px;
+    }
+
+    .chatMsgs {
+        justify-content: center;
+        align-items: center;
+        margin: 1rem auto;
+        width: 50%;
+        height: 35rem;
+        padding: 1rem 2rem;
+        background-color: black;
+        border: 2px solid #98C51C;
+        overflow-y: scroll;
+    }
+
+    .chatTextInput {
+        padding: 0.5rem 1.5rem;
+        border: 2px solid #ADCF1A;
+        border-radius: 20px;
+        background-color: white;
+        color: black;
+        margin: 1rem;
+        font-size: 1.2rem;
+        outline: none;
+    }
+
+    .allProducts {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 5rem 2rem;
+        text-align: center;
+        align-items: center;
+    }
+
+    .allProducts a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .allProducts a:hover {
+        color: #ADCF1A;
+    }
+
+    .productBox {
+        display: grid;
+        grid-gap: 2rem;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 0 9rem 1rem 9rem;
+    }
+
+    .productBox h3 {
+        margin: 1rem 0rem;
+    }
+
+    .productCard {
+        transition: transform 0.3s;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 0.5rem;
+        border: 2px solid #FFF700;
+        border-radius: 10px;
+        box-shadow: 0px 1px 7px 1px black;
+        background-color: #121B22;
+    }
+
+    .productCard:hover {
+        transform: scale(1.03);
+    }
+
+    .productCard img {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 10px;
+        border: 1px solid #FFF700;
+    }
+
+    .productValue {
+        display: inline;
+        text-align: center;
+        margin: 0.5rem;
+        color: #CCE00E;
+    }
+
+    .cartAdd {
+        display: flex;
+        padding: 1rem;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: #ADCF1A;
+        margin: 1rem;
+    }
+
+    .cartAdd__text {
+        cursor: pointer;
+    }
+
+    .cartAdd__text:hover {
+        color: #2B3942;
+    }
+
+    .cartAdd__select {
+        position: relative;
+        margin: 0rem 1rem;
+    }
+
+    .chatMessagesTitle {
+        margin: 7rem 0 0 10rem;
+        color: #ADCF1A;
+    }
+
+    .chatMessagesBox {
+        display: grid;
+        grid-template-columns: 0.3fr 1fr;
+        grid-template-areas: "left";
+        width: 80%;
+        height: 75vh;
+        margin: 1rem auto;
+        background-color: #121B22;
+        border: 2px solid #ADCF1A;
+        border-radius: 10px;
+        padding: 1rem;
+    }
+
+    .chatMessagesBox__left {
+        display: grid;
+        grid-auto-flow: row;
+        grid-area: "left";
+        margin: 0 0 1rem 0;
+        padding: 1rem 2rem;
+        cursor: pointer;
+        overflow-y: scroll;
+    }
+
+    .chatMessagesBox__card {
+        border: 2px solid #ADCF1A;
+    }
+
+    .chatUser,
+    .myUser {
+        display: none;
+    }
+
+    .messagesView {
+        display: grid;
+        overflow-y: scroll;
+        grid-template-rows: 1fr 0.2fr;
+        grid-template-areas: "arr""chatBottom";
+    }
+
+    .msgs {
+        overflow-y: scroll;
+        background-color: #2B3942;
+        margin: 1rem;
+    }
+
+    .messageForm {
+        grid-area: chatBottom;
+        padding-left: 1rem;
+    }
+
+    .profileBox {
+        margin-top: 7rem;
+        width: 85vw;
+        align-self: center;
+        justify-self: center;
+        padding: 2rem;
+        color: #ADCF1A;
+        background-color: #121B22;
+        border: 2px solid #ADCF1A;
+        border-radius: 10px;
+    }
+
+    .profileInfo {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: baseline;
+        padding: 1rem;
+        align-items: center;
+    }
+
+    .profileInfo__data {
+        color: #FFF700;
+    }
+
+    .profileInfo a {
+        text-decoration: none;
+        color: #FFFF9E;
+    }
+
+    .profileInfo a:hover {
+        color: #98C51C;
+    }
+
+    .profile__line {
+        width: 100%;
+        margin: 1rem 0rem;
+        color: #98C51C;
+    }
+
+    .messagesBox {
+        display: grid;
+        grid-template-rows: auto;
+        grid-auto-flow: row;
+        grid-gap: 1rem;
+        justify-self: center;
+        align-self: center;
+        margin-top: 7rem;
+        margin-bottom: 2rem;
+        padding: 2rem;
+        width: 85vw;
+        height: 85vh;
+        overflow-y: scroll;
+        color: #ADCF1A;
+        background-color: #121B22;
+        border: 2px solid #ADCF1A;
+        border-radius: 10px;
+    }
+
+    .messagesBox a {
+        transition: color 0.3s, background-color 0.3s, border 0.3s;
+        color: black;
+        width: max-content;
+        height: max-content;
+        text-decoration: none;
+        padding: 0.5rem 1.5rem;
+        margin: 1rem;
+        border: 2px solid white;
+        border-radius: 20px;
+        background-color: #ADCF1A;
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+
+    .messagesBox a:hover {
+        color: #FFFF9E;
+    }
+
+    .showMessage {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0.5rem;
+        margin: 0 2rem 1rem 2rem;
+        border-style: 1px solid #FFFF9E;
+        box-shadow: 0px 1px 6px 1px black;
+    }
+
+    .showMessage__time {
+        color: #98C51C;
+    }
+
+    .showMessage__text {
+        color: #ADCF1A;
+    }
+
+    .orderBox {
+        display: grid;
+        grid-template-rows: auto;
+        grid-auto-flow: row;
+        grid-gap: 2rem;
+        justify-self: center;
+        align-self: center;
+        margin-top: 7rem;
+        margin-bottom: 2rem;
+        width: 85vw;
+        height: fit-content;
+        padding: 2rem;
+        color: white;
+        background-color: #121B22;
+        border: 2px solid #ADCF1A;
+        border-radius: 10px;
+    }
+
+    .orderBox a {
+        transition: color 0.3s, background-color 0.3s, border 0.3s;
+        color: black;
+        width: max-content;
+        height: max-content;
+        text-decoration: none;
+        padding: 0.5rem 1.5rem;
+        margin: 1rem;
+        border: 2px solid white;
+        border-radius: 20px;
+        background-color: #ADCF1A;
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+
+    .orderBox__order {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border: 2px solid #ADCF1A;
+        padding: 1rem;
+        box-shadow: 0px 1px 6px 1px #FFFF9E;
+    }
+
+    .cartBox {
+        display: grid;
+        grid-template-rows: auto;
+        grid-auto-flow: row;
+        justify-self: center;
+        align-self: center;
+        margin-top: 7rem;
+        padding: 2rem;
+        width: 90%;
+        height: fit-content;
+        background-color: #121B22;
+        border: 2px solid #ADCF1A;
+        border-radius: 10px;
+        grid-gap: 1rem;
+    }
+
+    .cartBox__content {
+        display: grid;
+        grid-template-columns: 0.2fr 1fr;
+        min-height: 20rem;
+        max-height: fit-content;
+        margin: 1rem;
+    }
+
+    .cartBox__info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .cartBox__info p {
+        color: white;
+    }
+
+    .cartBox__order {
+        color: #ADCF1A;
+        cursor: pointer;
+    }
+
+    .cartBox__order:hover {
+        color: #FFFF9E;
+    }
+
+    .cartBox__products {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cartBox__products--image img {
+        height: 10rem;
+        width: 10rem;
+    }
+
+    .cartBox__products--image h2 {
+        color: #ADCF1A;
+    }
+
+    .cartBox__products--image p {
+        color: white;
+    }
+
+    .cartBox__deleteProduct {
+        padding: 0.5rem 1.5rem;
+        border: 2px solid white;
+        border-radius: 20px;
+        background-color: #ADCF1A;
+        cursor: pointer;
+    }
+
+    .cartBox__deleteProduct:hover {
+        color: #F34213;
+    }
+
+    .infoBox {
+        color: #98C51C;
+    }
+
+    .chatForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Subcontainer {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        margin-top: 7rem;
+        width: 100%;
+    }
+
+    .Subcontai2ner img {
+        width: 7rem;
+        height: 9rem;
+    }
+
+    .container2 {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 4px;
+        background-color: #98C51C;
+    }
+
+    .Banner {
+        margin-top: 1rem;
+        justify-self: center;
+        align-self: center;
+    }
+
+    .BText {
+        color: #FFFF9E;
+        text-align: center;
+    }
+
+    #phone,
+    .btn {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        border: 2px solid #ADCF1A;
+        border-radius: 4px;
+    }
+
+    .btn {
+        color: #121B22;
+        background-color: #CCE00E;
+        border-color: #98C51C;
+        font-size: 1rem;
+        outline: none;
+        cursor: pointer;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .btn:focus,
+    .btn:hover {
+        border-color: #98C51C;
+        background-color: #CCE00E;
+    }
+
+    .btn:active {
+        box-shadow: inset 0 3px 5px #212E36;
+    }
+
+    .NewCart {
+        text-decoration: none;
+        cursor: pointer;
+        width: fit-content;
+        color: #98C51C;
+    }
+
+    .NewCart:hover {
+        color: #FFFF9E;
+    }
+
+    .alert {
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 4px;
+        border: 1px solid transparent;
+    }
+
+    .alert-info {
+        border-color: #FFFF9E;
+        color: #212E36;
+        background-color: #CCE00E;
+    }
+
+    .alert-error {
+        color: #F34213;
+        background-color: #2E2E3A;
+        border-color: #DE9151;
+    }
+
+    .myForm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        width: 75vw;
+        justify-content: center;
+    }
+
+    .myForm input {
+        width: 15rem;
+    }
+</style>

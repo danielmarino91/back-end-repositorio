@@ -1,0 +1,42 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <% user=JSON.parse(user) %>
+        <%- include("../partials/head.ejs"); %>
+            <%- include("../partials/css.ejs"); %>
+</head>
+
+<body>
+    <div class="orderBox">
+        <% if (orders) { %>
+            <h1>Órdenes de compra</h1>
+            <a href="/shop/profile">Regresar a mi perfil</a>
+            <% for (let i=0; i < orders.length; i++) { %>
+                <div class="orderBox__order">
+                    <div>
+                        <h4>Orden número: <span class="profileInfo__data">
+                                <%= orders[i].order.orderNo %>
+                            </span>
+                        </h4>
+                        <h4>Total a pagar: <span class="profileInfo__data">
+                                <%= orders[i].order.total %>
+                            </span>
+                        </h4>
+                    </div>
+                    <ul>
+                        <% for (let j=0; j < orders[i].order.products.length; j++) { %>
+                            <li>
+                                <%= orders[i].order.products[j].name %> x <%= orders[i].order.products[j].quantity %>
+                            </li>
+                            <% } %>
+                    </ul>
+                </div>
+                <% } %>
+                    <% } else { %>
+                        <h2>No hay ninguna orden de compra</h2>
+                        <% } %>
+    </div>
